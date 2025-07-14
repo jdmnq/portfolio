@@ -136,10 +136,10 @@
       }
 
       .hero-avatar {
-        width: 120px;
-        height: 120px;
+        width: 170px;
+        height: 170px;
         margin: 0 auto 30px;
-        background: linear-gradient(135deg, #fce7f3, #e0e7ff, #f3e8ff);
+        background: linear-gradient(135deg, #fffbc0c0, #ffd2dac5, #e8d5fcc7);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -168,7 +168,7 @@
       .hero h1 {
         font-size: 3.5rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #b3e3f1, #f5cde2, #93dbe7);
+        background: linear-gradient(135deg, #b9ecfc, #fdc9dd, #eaa7f3);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -574,7 +574,6 @@
           transform: translateY(0);
         }
       }
-
       /* Floating Elements */
       .floating-element {
         position: absolute;
@@ -585,26 +584,32 @@
 
       .floating-1 {
         top: 20%;
-        left: 10%;
+        left: 1%;
         animation-delay: 0s;
       }
 
       .floating-2 {
-        top: 40%;
-        right: 15%;
+        top: 11%;
+        right: 16%;
         animation-delay: 1s;
       }
 
       .floating-3 {
-        top: 60%;
+        top: 6%;
         left: 20%;
         animation-delay: 2s;
       }
 
       .floating-4 {
-        top: 80%;
-        right: 25%;
+        top: 25%;
+        right: -2%;
         animation-delay: 0.5s;
+      }
+
+      /* Disable horizontal scrolling */
+      html,
+      body {
+        overflow-x: hidden;
       }
 
       /* Responsive Design */
@@ -687,10 +692,30 @@
   </head>
   <body>
     <!-- Floating Background Elements -->
-    <div class="floating-element floating-1">☁️</div>
-    <div class="floating-element floating-2">✨</div>
-    <div class="floating-element floating-3">🌸</div>
-    <div class="floating-element floating-4">💫</div>
+    <div class="floating-element floating-1">
+      <img
+        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\c832189161cc3f33c10243d185b81c66-removebg-preview.png"
+        alt="Cinnamoroll Image 1"
+      />
+    </div>
+    <div class="floating-element floating-2">
+      <img
+        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\fd43c73c40d3a85db5fc399aa492c5d0-removebg-preview.png"
+        alt="Cinnamoroll Image 2"
+      />
+    </div>
+    <div class="floating-element floating-3">
+      <img
+        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\7af230178b8ee9770135039934092303-removebg-preview.png"
+        alt="Cinnamoroll Image 3"
+      />
+    </div>
+    <div class="floating-element floating-4">
+      <img
+        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\88290c3defea36544dea787ec1a86876-removebg-preview.png"
+        alt="Cinnamoroll Image 4"
+      />
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -715,7 +740,16 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-avatar">
-            <span style="font-size: 3rem">⭐</span>
+            <img
+              src="C:\Users\Intern\cinnamoroll-portfolio\src\images\88afd05379d8aa8496b3246d9344cd41-removebg-preview (1).png"
+              alt="Jewell Dominique Costales Avatar"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+              "
+            />
           </div>
           <h1>Fine Lines</h1>
           <p>
@@ -724,7 +758,12 @@
           </p>
           <div class="hero-buttons">
             <a href="#about" class="btn btn-primary">Explore My Story</a>
-            <a href="#" class="btn btn-secondary">📄 Download CV</a>
+            <a
+              href="https://drive.google.com/uc?export=download&id=1Rfj45HguyAWF7P0GIf7Hx9EGI0YwV7CX"
+              class="btn btn-secondary"
+              download="CV_CostalesJewellDominique.pdf"
+              >📄 Download CV</a
+            >
           </div>
         </div>
       </div>
@@ -739,7 +778,7 @@
         <div class="about-content">
           <div class="card">
             <div class="about-text">
-              <h3>Hello, I'm a Developer! ✨</h3>
+              <h3>Hello, I'm Jewell! ✨</h3>
               <p>
                 Welcome to my digital wonderland! I'm a passionate software
                 developer who believes in creating beautiful, functional, and
@@ -1159,7 +1198,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2025 Jewell Dominique Costales. All rights reserved.</p>
+          <p>© 2025 Jewell Dominique Costales. All rights reserved.</p>
         </div>
       </div>
     </footer>
