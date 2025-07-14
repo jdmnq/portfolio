@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        line-height: 1.6;
+        color: #374151;
+        background: linear-gradient(
+          135deg,
+          #fef7ff 0%,
+          #f0f9ff 50%,
+          #fef3c7 100%
+        );
+        min-height: 100vh;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: linear-gradient(135deg, #b3e3f1, #f5cde2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-family: "Pinyon Script", cursive;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #ffc6e6, #b9c7f8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #6b7280;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-family: "Playfair Display", serif;
+      }
+
+      .nav-links a:hover {
+        background: linear-gradient(135deg, #b3e3f1, #f5cde2);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 0 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(167, 139, 250, 0.1) 0%,
+          transparent 70%
+        );
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 30px;
+        background: linear-gradient(135deg, #fce7f3, #e0e7ff, #f3e8ff);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 40px rgba(167, 139, 250, 0.2);
+        position: relative;
+        animation: bounce-gentle 3s ease-in-out infinite;
+      }
+
+      .hero-avatar::after {
+        content: "✨";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #f5cde2;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #b3e3f1, #f5cde2, #93dbe7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        font-family: "Pinyon Script", cursive;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: #6b7280;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #b3e9fa, #f5cde2);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #f5cde2, #e1bceb);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #6b7280;
+        border: 2px solid #f5cde2;
+      }
+
+      .btn-secondary:hover {
+        background: #f5cde2;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 15px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(135deg, #f5cde2, #bef4fc);
+        margin: 0 auto;
+        border-radius: 2px;
+      }
+
+      /* Cards */
+      .card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(167, 139, 250, 0.15);
+      }
+
+      /* Grid Layouts */
+      .grid {
+        display: grid;
+        gap: 30px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        color: #1f2937;
+        margin-bottom: 20px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        color: #6b7280;
+      }
+
+      .traits {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .trait {
+        background: linear-gradient(135deg, #fce7f3, #bef4fc);
+        color: #6b7280;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* Projects Section */
+      .project-card {
+        text-align: center;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #f5cde2, #bef4fc);
+        border-radius: 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+      }
+
+      .project-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: #1f2937;
+        font-family: "Playfair Display", serif;
+      }
+
+      .project-card p {
+        color: #6b7280;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .tech-tag {
+        background: #f3f4f6;
+        color: #6b7280;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+      }
+
+      /* Skills Section */
+      .skill-item {
+        margin-bottom: 20px;
+      }
+
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .skill-name {
+        font-weight: 500;
+        color: #1f2937;
+      }
+
+      .skill-percentage {
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+
+      .skill-bar {
+        width: 100%;
+        height: 12px;
+        background: #f3f4f6;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(135deg, #cabdf3, #f5cde2);
+        border-radius: 6px;
+        transition: width 2s ease-in-out;
+      }
+
+      /* Company Section */
+      .company-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .company-card {
+        text-align: center;
+      }
+
+      .company-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #f5cde2, #bef4fc);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .company-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: #1f2937;
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Certificate and Seminar Lists */
+      .cert-item,
+      .seminar-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 12px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .cert-item:hover,
+      .seminar-item:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateX(10px);
+      }
+
+      .cert-icon,
+      .seminar-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #f5cde2, #bef4fc);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      /* Footer */
+      .footer {
+        background: linear-gradient(135deg, #fce7f3, #bef4fc);
+        padding: 60px 0 30px;
+        text-align: center;
+      }
+
+      .footer-content {
+        margin-bottom: 30px;
+      }
+
+      .footer h3 {
+        font-size: 1.8rem;
+        background: linear-gradient(135deg, #c4b3f8, #f5cde2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .footer p {
+        color: #6b7280;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-social-links {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .footer-social-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #374151;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #f5cde2;
+        transition: all 0.3s ease;
+      }
+
+      .footer-social-link:hover {
+        background: linear-gradient(135deg, #f5cde2, #e1bceb);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+      }
+
+      .footer-social-icon {
+        font-size: 1.2rem;
+      }
+
+      .footer-bottom {
+        color: #9ca3af;
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        padding-top: 20px;
+      }
+
+      /* Animations */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes bounce-gentle {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Floating Elements */
+      .floating-element {
+        position: absolute;
+        opacity: 0.3;
+        animation: float 4s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .floating-1 {
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-2 {
+        top: 40%;
+        right: 15%;
+        animation-delay: 1s;
+      }
+
+      .floating-3 {
+        top: 60%;
+        left: 20%;
+        animation-delay: 2s;
+      }
+
+      .floating-4 {
+        top: 80%;
+        right: 25%;
+        animation-delay: 0.5s;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .company-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-social-links {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .hero {
+          padding: 100px 0 60px;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .card {
+          padding: 20px;
+        }
+      }
+
+      /* Smooth scroll offset for fixed navbar */
+      .section {
+        scroll-margin-top: 80px;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #c4b3f8, #f5cde2);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #f5cde2, #b3f6ff);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element floating-1">☁️</div>
+    <div class="floating-element floating-2">✨</div>
+    <div class="floating-element floating-3">🌸</div>
+    <div class="floating-element floating-4">💫</div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">
+            <div class="logo-icon">💖</div>
+            <span>Jewell Dominique Costales</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#company">Company</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-avatar">
+            <span style="font-size: 3rem">⭐</span>
+          </div>
+          <h1>Fine Lines</h1>
+          <p>
+            A dreamy collection of my journey in software development, wrapped
+            in clouds of creativity and sprinkled with passion
+          </p>
+          <div class="hero-buttons">
+            <a href="#about" class="btn btn-primary">Explore My Story</a>
+            <a href="#" class="btn btn-secondary">📄 Download CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me 🌸</h2>
+        </div>
+        <div class="about-content">
+          <div class="card">
+            <div class="about-text">
+              <h3>Hello, I'm a Developer! ✨</h3>
+              <p>
+                Welcome to my digital wonderland! I'm a passionate software
+                developer who believes in creating beautiful, functional, and
+                user-friendly applications. My journey in tech is filled with
+                curiosity, creativity, and a sprinkle of magic.
+              </p>
+              <p>
+                When I'm not coding, you can find me exploring new technologies,
+                contributing to open-source projects, or dreaming up the next
+                big idea. I believe that great software is born from the perfect
+                blend of technical expertise and creative vision.
+              </p>
+              <div class="traits">
+                <span class="trait">Creative</span>
+                <span class="trait">Passionate</span>
+                <span class="trait">Detail-oriented</span>
+                <span class="trait">Collaborative</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card" style="margin-bottom: 20px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 15px;
+                  margin-bottom: 15px;
+                "
+              >
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    background: linear-gradient(135deg, #f5cde2, #f5cde2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                  "
+                >
+                  💻
+                </div>
+                <h4 style="font-size: 1.2rem; color: #1f2937">
+                  Programming Journey
+                </h4>
+              </div>
+              <p style="color: #6b7280; font-size: 0.9rem">
+                Started coding with curiosity, now building dreams into reality
+                with every line of code.
+              </p>
+            </div>
+            <div class="card">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 15px;
+                  margin-bottom: 15px;
+                "
+              >
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    background: linear-gradient(135deg, #f5cde2, #f5cde2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                  "
+                >
+                  💖
+                </div>
+                <h4 style="font-size: 1.2rem; color: #1f2937">
+                  Design Philosophy
+                </h4>
+              </div>
+              <p style="color: #6b7280; font-size: 0.9rem">
+                Creating user experiences that feel magical while maintaining
+                clean, efficient code.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="section"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(252, 231, 243, 0.3),
+          rgba(224, 231, 255, 0.3)
+        );
+      "
+    >
+      <div class="container">
+        <div class="section-title">
+          <h2>My Projects 💖</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #60a5fa, #f5cde2)"
+            >
+              🛍️
+            </div>
+            <h3>E-Commerce Platform</h3>
+            <p>A beautiful shopping experience with modern design</p>
+            <div class="tech-tags">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+            <a href="#" class="btn btn-primary" style="width: 100%"
+              >View Project</a
+            >
+          </div>
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #f5cde2, #f5cde2)"
+            >
+              📝
+            </div>
+            <h3>Task Management App</h3>
+            <p>Organize your life with style and efficiency</p>
+            <div class="tech-tags">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Tailwind</span>
+            </div>
+            <a href="#" class="btn btn-primary" style="width: 100%"
+              >View Project</a
+            >
+          </div>
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #a855f7, #c084fc)"
+            >
+              🌤️
+            </div>
+            <h3>Weather Dashboard</h3>
+            <p>Beautiful weather forecasting with animations</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">API Integration</span>
+              <span class="tech-tag">CSS3</span>
+            </div>
+            <a href="#" class="btn btn-primary" style="width: 100%"
+              >View Project</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programming Skills Section -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Programming Skills 🌟</h2>
+        </div>
+        <div class="grid grid-4">
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percentage">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">React</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">TypeScript</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Node.js</span>
+                <span class="skill-percentage">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python</span>
+                <span class="skill-percentage">70%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">CSS/Sass</span>
+                <span class="skill-percentage">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">MongoDB</span>
+                <span class="skill-percentage">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Git</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates & Seminars Section -->
+    <section
+      class="section"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(243, 232, 255, 0.3),
+          rgba(252, 231, 243, 0.3)
+        );
+      "
+    >
+      <div class="container">
+        <div class="grid grid-2">
+          <div>
+            <div class="section-title">
+              <h2>Certificates 🏆</h2>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">🎓</div>
+              <span>Full Stack Web Development Certification</span>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">⚛️</div>
+              <span>React Advanced Patterns & Best Practices</span>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">🟢</div>
+              <span>Node.js & Express.js Mastery</span>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">🍃</div>
+              <span>MongoDB Database Design</span>
+            </div>
+          </div>
+          <div>
+            <div class="section-title">
+              <h2>Seminars 📚</h2>
+            </div>
+            <div class="seminar-item">
+              <div class="seminar-icon">📅</div>
+              <span>Modern JavaScript ES2023 Features</span>
+            </div>
+            <div class="seminar-item">
+              <div class="seminar-icon">🎨</div>
+              <span>UI/UX Design for Developers</span>
+            </div>
+            <div class="seminar-item">
+              <div class="seminar-icon">☁️</div>
+              <span>Cloud Computing with AWS</span>
+            </div>
+            <div class="seminar-item">
+              <div class="seminar-icon">📱</div>
+              <span>Mobile Development with React Native</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Overview Section -->
+    <section id="company" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Company Overview 🏢</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #60a5fa, #f5cde2)"
+            >
+              🛍️
+            </div>
+            <h3>E-Commerce Platform</h3>
+            <p>A beautiful shopping experience with modern design</p>
+            <div class="tech-tags">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+            <a href="#" class="btn btn-primary" style="width: 100%"
+              >View Project</a
+            >
+          </div>
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #f5cde2, #f5cde2)"
+            >
+              📝
+            </div>
+            <h3>Task Management App</h3>
+            <p>Organize your life with style and efficiency</p>
+            <div class="tech-tags">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Tailwind</span>
+            </div>
+            <a href="#" class="btn btn-primary" style="width: 100%"
+              >View Project</a
+            >
+          </div>
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #a855f7, #c084fc)"
+            >
+              🌤️
+            </div>
+            <h3>Weather Dashboard</h3>
+            <p>Beautiful weather forecasting with animations</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">API Integration</span>
+              <span class="tech-tag">CSS3</span>
+            </div>
+            <a href="#" class="btn btn-primary" style="width: 100%"
+              >View Project</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <h3>Connect With Me 🌟</h3>
+          <p>Let's collaborate and create something magical together!</p>
+          <div class="footer-social-links">
+            <a
+              href="https://github.com/yourusername"
+              class="footer-social-link"
+              target="_blank"
+            >
+              <span class="footer-social-icon">🐙</span> GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              class="footer-social-link"
+              target="_blank"
+            >
+              <span class="footer-social-icon">💼</span> LinkedIn
+            </a>
+            <a
+              href="https://upwork.com/freelancers/yourusername"
+              class="footer-social-link"
+              target="_blank"
+            >
+              <span class="footer-social-icon">💻</span> Upwork
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Jewell Dominique Costales. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
