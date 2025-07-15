@@ -29,6 +29,8 @@
           #fef3c7 100%
         );
         min-height: 100vh;
+        width: auto;
+        overflow-x: hidden;
       }
 
       html {
@@ -223,14 +225,32 @@
       }
 
       .btn-secondary:hover {
-        background: #f5cde2;
-        color: white;
+        background: linear-gradient(135deg, #ffffff, #f5c3dc);
         transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+      }
+
+      /* Heading Styles */
+      h2 {
+        font-family: "Pinyon Script", cursive;
+      }
+
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
       }
 
       /* Section Styles */
       .section {
         padding: 80px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .section-title {
@@ -243,7 +263,6 @@
         font-weight: 700;
         color: #1f2937;
         margin-bottom: 15px;
-        font-family: "Playfair Display", serif;
       }
 
       .section-title::after {
@@ -302,7 +321,6 @@
         font-size: 1.8rem;
         color: #1f2937;
         margin-bottom: 20px;
-        font-family: "Playfair Display", serif;
       }
 
       .about-text p {
@@ -348,7 +366,6 @@
         font-size: 1.3rem;
         margin-bottom: 10px;
         color: #1f2937;
-        font-family: "Playfair Display", serif;
       }
 
       .project-card p {
@@ -438,7 +455,6 @@
         font-size: 1.3rem;
         margin-bottom: 15px;
         color: #1f2937;
-        font-family: "Playfair Display", serif;
       }
 
       /* Certificate and Seminar Lists */
@@ -492,7 +508,6 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-bottom: 15px;
-        font-family: "Playfair Display", serif;
       }
 
       .footer p {
@@ -574,6 +589,7 @@
           transform: translateY(0);
         }
       }
+
       /* Floating Elements */
       .floating-element {
         position: absolute;
@@ -604,12 +620,6 @@
         top: 25%;
         right: -2%;
         animation-delay: 0.5s;
-      }
-
-      /* Disable horizontal scrolling */
-      html,
-      body {
-        overflow-x: hidden;
       }
 
       /* Responsive Design */
@@ -688,33 +698,36 @@
       ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(135deg, #f5cde2, #b3f6ff);
       }
+
+      .image-size {
+        width: 6rem;
+      }
+
+      .title-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .offset {
+        margin-left: 3rem;
+      }
     </style>
   </head>
   <body>
     <!-- Floating Background Elements -->
     <div class="floating-element floating-1">
-      <img
-        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\c832189161cc3f33c10243d185b81c66-removebg-preview.png"
-        alt="Cinnamoroll Image 1"
-      />
+      <img src="./src/images/floating1.png" alt="Cinnamoroll Image 1" />
     </div>
     <div class="floating-element floating-2">
-      <img
-        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\fd43c73c40d3a85db5fc399aa492c5d0-removebg-preview.png"
-        alt="Cinnamoroll Image 2"
-      />
+      <img src="./src/images/floating3.png" alt="Cinnamoroll Image 2" />
     </div>
     <div class="floating-element floating-3">
-      <img
-        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\7af230178b8ee9770135039934092303-removebg-preview.png"
-        alt="Cinnamoroll Image 3"
-      />
+      <img src="./src/images/floating2.png" alt="Cinnamoroll Image 3" />
     </div>
     <div class="floating-element floating-4">
-      <img
-        src="C:\Users\Intern\cinnamoroll-portfolio\src\images\88290c3defea36544dea787ec1a86876-removebg-preview.png"
-        alt="Cinnamoroll Image 4"
-      />
+      <img src="./src/images/floating4.png" alt="Cinnamoroll Image 4" />
     </div>
 
     <!-- Navigation -->
@@ -722,14 +735,21 @@
       <div class="container">
         <div class="nav-container">
           <div class="logo">
-            <div class="logo-icon">💖</div>
+            <div class="logo-icon">
+              <img
+                src="./src/images/heart.png"
+                alt="Cinnamoroll Logo"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
             <span>Jewell Dominique Costales</span>
           </div>
           <ul class="nav-links">
             <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#company">Company</a></li>
+            <li><a href="#projects">Works and Skills</a></li>
+            <li><a href="#company">Final Report</a></li>
+            <li><a href="#appendices">Appendices</a></li>
+            <li><a href="#footer">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -741,7 +761,7 @@
         <div class="hero-content">
           <div class="hero-avatar">
             <img
-              src="C:\Users\Intern\cinnamoroll-portfolio\src\images\88afd05379d8aa8496b3246d9344cd41-removebg-preview (1).png"
+              src="./src/cinnamoroll/cinna1-used.png"
               alt="Jewell Dominique Costales Avatar"
               style="
                 width: 100%;
@@ -759,9 +779,10 @@
           <div class="hero-buttons">
             <a href="#about" class="btn btn-primary">Explore My Story</a>
             <a
-              href="https://drive.google.com/uc?export=download&id=1Rfj45HguyAWF7P0GIf7Hx9EGI0YwV7CX"
+              href="https://drive.google.com/file/d/1Rfj45HguyAWF7P0GIf7Hx9EGI0YwV7CX/view?usp=sharing"
               class="btn btn-secondary"
-              download="CV_CostalesJewellDominique.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               >📄 Download CV</a
             >
           </div>
@@ -772,24 +793,31 @@
     <!-- About Me Section -->
     <section id="about" class="section">
       <div class="container">
-        <div class="section-title">
-          <h2>About Me 🌸</h2>
+        <div class="section-title flex items-center">
+          <div class="title-container">
+            <h2>About Me</h2>
+            <img
+              class="image-size"
+              src="./src/cinnamoroll/cinna2-used.png"
+              alt="Cinnamoroll"
+              class="w-6 h-6 ml-2"
+            />
+          </div>
         </div>
         <div class="about-content">
           <div class="card">
             <div class="about-text">
               <h3>Hello, I'm Jewell! ✨</h3>
+              <p>4th Year IT Student from Mapúa Malayan Colleges Laguna</p>
               <p>
-                Welcome to my digital wonderland! I'm a passionate software
-                developer who believes in creating beautiful, functional, and
-                user-friendly applications. My journey in tech is filled with
-                curiosity, creativity, and a sprinkle of magic.
-              </p>
-              <p>
-                When I'm not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or dreaming up the next
-                big idea. I believe that great software is born from the perfect
-                blend of technical expertise and creative vision.
+                I’m a passionate 4th-year Information Technology student with
+                hands-on experience in IT, web development, and mobile
+                application development. I thrive on designing innovative
+                solutions and enjoy the dynamic challenges of full-stack
+                development. My curiosity drives me to continuously learn and
+                master the art and structure of web development, always seeking
+                to enhance my skills and create impactful, user-focused
+                applications.
               </p>
               <div class="traits">
                 <span class="trait">Creative</span>
@@ -823,46 +851,61 @@
                 >
                   💻
                 </div>
-                <h4 style="font-size: 1.2rem; color: #1f2937">
-                  Programming Journey
-                </h4>
+                <h2 style="font-family: 'Playfair Display', serif">
+                  IT Journey
+                </h2>
               </div>
-              <p style="color: #6b7280; font-size: 0.9rem">
-                Started coding with curiosity, now building dreams into reality
-                with every line of code!
-              </p>
-            </div>
-            <div class="card">
-              <div
-                style="
-                  display: flex;
-                  align-items: center;
-                  gap: 15px;
-                  margin-bottom: 15px;
-                "
-              >
-                <div
-                  style="
-                    width: 40px;
-                    height: 40px;
-                    background: linear-gradient(135deg, #f5cde2, #f5cde2);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: white;
-                  "
-                >
-                  💖
-                </div>
-                <h4 style="font-size: 1.2rem; color: #1f2937">
-                  Design Philosophy
-                </h4>
+              <div class="offset">
+                <ul style="text-decoration: dotted">
+                  <li>
+                    <h4>Junior Developer</h4>
+                  </li>
+                  <p
+                    style="
+                      color: #6b7280;
+                      font-size: 0.9rem;
+                      margin-bottom: 2rem;
+                      line-height: 1.5;
+                    "
+                  >
+                    Full-stack Web Developer
+                  </p>
+                  <li>
+                    <h4>UI/UX</h4>
+                  </li>
+                  <p
+                    style="
+                      color: #6b7280;
+                      font-size: 0.9rem;
+                      margin-bottom: 2rem;
+                      line-height: 1.5;
+                    "
+                  >
+                    Figma, Prototyping, Implementation
+                  </p>
+                  <li>
+                    <h4>Database</h4>
+                  </li>
+                  <p
+                    style="
+                      color: #6b7280;
+                      font-size: 0.9rem;
+                      margin-bottom: 2rem;
+                      line-height: 1.5;
+                    "
+                  >
+                    PHP and SQL
+                  </p>
+                  <li>
+                    <h4>Backend Developer</h4>
+                  </li>
+                  <p
+                    style="color: #6b7280; font-size: 0.9rem; line-height: 1.5"
+                  >
+                    PHP, SQL, Laravel, Spatie, Postman
+                  </p>
+                </ul>
               </div>
-              <p style="color: #6b7280; font-size: 0.9rem">
-                Creating user experiences that feel magical while maintaining
-                clean, efficient code.
-              </p>
             </div>
           </div>
         </div>
@@ -883,7 +926,15 @@
     >
       <div class="container">
         <div class="section-title">
-          <h2>My Projects 💖</h2>
+          <div class="title-container">
+            <h2>Projects</h2>
+            <img
+              class="image-size"
+              src="./src/cinnamoroll/cinna3.png"
+              alt="Cinnamoroll"
+              class="w-6 h-6 ml-2"
+            />
+          </div>
         </div>
         <div class="grid grid-3">
           <div class="card project-card">
@@ -893,32 +944,24 @@
             >
               🛍️
             </div>
-            <h3>E-Commerce Platform</h3>
-            <p>A beautiful shopping experience with modern design</p>
+            <h3>Bookshop Management</h3>
+            <p>
+              A bookshop service website for printing offers an intuitive
+              platform where users can upload manuscripts, customize print
+              options (e.g., binding, paper type, cover design), and order
+              high-quality printed books.
+            </p>
             <div class="tech-tags">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">MS Access</span>
             </div>
-            <a href="#" class="btn btn-primary" style="width: 100%"
-              >View Project</a
-            >
-          </div>
-          <div class="card project-card">
-            <div
-              class="project-image"
-              style="background: linear-gradient(135deg, #f5cde2, #f5cde2)"
-            >
-              📝
-            </div>
-            <h3>Task Management App</h3>
-            <p>Organize your life with style and efficiency</p>
-            <div class="tech-tags">
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Tailwind</span>
-            </div>
-            <a href="#" class="btn btn-primary" style="width: 100%"
+            <a
+              href="https://drive.google.com/drive/folders/1zbZagBTWCPiRf7IAsfHcLAt9ma6ItMfl?fbclid=IwY2xjawLir19leHRuA2FlbQIxMQABHhFVzU19FrWmbWYJigcH8PO-Z7j9g57w4i3vED0C3on2d1r0eG-HcBrJplU2_aem_5nbOE5Kn98b6j4VTSOxYjw"
+              class="btn btn-primary"
+              style="width: 100%"
+              target="_blank"
+              rel="noopener noreferrer"
               >View Project</a
             >
           </div>
@@ -929,14 +972,56 @@
             >
               🌤️
             </div>
-            <h3>Weather Dashboard</h3>
-            <p>Beautiful weather forecasting with animations</p>
+            <h3>Customer Relationship Management</h3>
+            <p>
+              A streamlined web-based CRM system designed to enhance customer
+              interactions and business efficiency. It enables tracking of
+              customer data and communication history, with tools for task
+              automation and analytics.
+            </p>
             <div class="tech-tags">
-              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">ReactJS</span>
               <span class="tech-tag">API Integration</span>
-              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">Mantine</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">PHP</span>
             </div>
-            <a href="#" class="btn btn-primary" style="width: 100%"
+            <a
+              href="https://www.figma.com/proto/NzTO1BjJZNapYP3ASh1v3O/Customer-Relationship-Management?node-id=2-40&p=f&t=QbLVj6V7zm6etOHL-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1"
+              class="btn btn-primary"
+              style="width: 100%"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Project</a
+            >
+          </div>
+          <div class="card project-card">
+            <div
+              class="project-image"
+              style="background: linear-gradient(135deg, #f5cde2, #f5cde2)"
+            >
+              📝
+            </div>
+            <h3>Aquaponics Water Monitoring</h3>
+            <p>
+              Web-Based Physicochemical Water Parameter Monitoring With
+              Recommendation System using Arduino Microcontroller Based Sensors
+              for Small Scale Aquaponic System
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Tailwind</span>
+            </div>
+            <a
+              href="https://www.canva.com/design/DAGV5FaVh-A/H_mgaSF-n5ZG6lUuSMwXmw/view?utm_content=DAGV5FaVh-A&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h960844d438"
+              class="btn btn-primary"
+              style="width: 100%"
+              target="_blank"
+              rel="noopener noreferrer"
               >View Project</a
             >
           </div>
@@ -948,13 +1033,21 @@
     <section id="skills" class="section">
       <div class="container">
         <div class="section-title">
-          <h2>Programming Skills 🌟</h2>
+          <div class="title-container">
+            <h2>Skills</h2>
+            <img
+              class="image-size"
+              src="./src/cinnamoroll/cinna4.png"
+              alt="Cinnamoroll"
+              class="w-6 h-6 ml-2"
+            />
+          </div>
         </div>
         <div class="grid grid-4">
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">JavaScript</span>
+                <span class="skill-name">Communication</span>
                 <span class="skill-percentage">90%</span>
               </div>
               <div class="skill-bar">
@@ -965,7 +1058,7 @@
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">React</span>
+                <span class="skill-name">Adaptability</span>
                 <span class="skill-percentage">85%</span>
               </div>
               <div class="skill-bar">
@@ -976,55 +1069,66 @@
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">TypeScript</span>
-                <span class="skill-percentage">80%</span>
+                <span class="skill-name">Collaborative</span>
+                <span class="skill-percentage">90%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 80%"></div>
+                <div class="skill-progress" style="width: 90%"></div>
               </div>
             </div>
           </div>
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">Node.js</span>
-                <span class="skill-percentage">75%</span>
+                <span class="skill-name">Receptive</span>
+                <span class="skill-percentage">100%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 75%"></div>
+                <div class="skill-progress" style="width: 100%"></div>
               </div>
             </div>
           </div>
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">Python</span>
-                <span class="skill-percentage">70%</span>
+                <span class="skill-name">Problem Solving</span>
+                <span class="skill-percentage">60%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 70%"></div>
+                <div class="skill-progress" style="width: 60%"></div>
               </div>
             </div>
           </div>
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">CSS/Sass</span>
-                <span class="skill-percentage">85%</span>
+                <span class="skill-name">ReactJS</span>
+                <span class="skill-percentage">45%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%"></div>
+                <div class="skill-progress" style="width: 45%"></div>
               </div>
             </div>
           </div>
           <div class="card">
             <div class="skill-item">
               <div class="skill-header">
-                <span class="skill-name">MongoDB</span>
-                <span class="skill-percentage">75%</span>
+                <span class="skill-name">CSS</span>
+                <span class="skill-percentage">45%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 75%"></div>
+                <div class="skill-progress" style="width: 45%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">PHP</span>
+                <span class="skill-percentage">45%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 45%"></div>
               </div>
             </div>
           </div>
@@ -1032,10 +1136,21 @@
             <div class="skill-item">
               <div class="skill-header">
                 <span class="skill-name">Git</span>
-                <span class="skill-percentage">80%</span>
+                <span class="skill-percentage">45%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" style="width: 80%"></div>
+                <div class="skill-progress" style="width: 45%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Laravel</span>
+                <span class="skill-percentage">45%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 45%"></div>
               </div>
             </div>
           </div>
@@ -1058,36 +1173,54 @@
         <div class="grid grid-2">
           <div>
             <div class="section-title">
-              <h2>Certificates 🏆</h2>
+              <div class="title-container">
+                <h2>Certifications</h2>
+                <img
+                  class="image-size"
+                  src="./src/cinnamoroll/cinna5.png"
+                  alt="Cinnamoroll"
+                  class="w-6 h-6 ml-2"
+                />
+              </div>
             </div>
             <div class="cert-item">
               <div class="cert-icon">🎓</div>
-              <span>Full Stack Web Development Certification</span>
+              <span>CompTIA IT Fundamental+ (ITF+) Certification</span>
             </div>
             <div class="cert-item">
               <div class="cert-icon">⚛️</div>
-              <span>React Advanced Patterns & Best Practices</span>
+              <span>By Google: Google Cloud Essentials</span>
             </div>
             <div class="cert-item">
               <div class="cert-icon">🟢</div>
-              <span>Node.js & Express.js Mastery</span>
+              <span>AWS Academy Cloud Foundations</span>
             </div>
             <div class="cert-item">
               <div class="cert-icon">🍃</div>
-              <span>MongoDB Database Design</span>
+              <span>Cisco Certified: Introduction to Networks</span>
             </div>
           </div>
           <div>
             <div class="section-title">
-              <h2>Seminars 📚</h2>
+              <div class="title-container">
+                <h2>Seminars</h2>
+                <img
+                  class="image-size"
+                  src="./src/cinnamoroll/cinna7.png"
+                  alt="Cinnamoroll"
+                  class="w-6 h-6 ml-2"
+                />
+              </div>
             </div>
             <div class="seminar-item">
               <div class="seminar-icon">📅</div>
-              <span>Modern JavaScript ES2023 Features</span>
+              <span
+                >Software-Defined Networking, OpenFlow, NFV, and Open RAN</span
+              >
             </div>
             <div class="seminar-item">
               <div class="seminar-icon">🎨</div>
-              <span>UI/UX Design for Developers</span>
+              <span>Introduction to Cloud Computing</span>
             </div>
             <div class="seminar-item">
               <div class="seminar-icon">☁️</div>
@@ -1095,7 +1228,7 @@
             </div>
             <div class="seminar-item">
               <div class="seminar-icon">📱</div>
-              <span>Mobile Development with React Native</span>
+              <span>Introduction to the Data Center Industry</span>
             </div>
           </div>
         </div>
@@ -1106,7 +1239,15 @@
     <section id="company" class="section">
       <div class="container">
         <div class="section-title">
-          <h2>Company Overview 🏢</h2>
+          <div class="title-container">
+            <h2>Practicum Engagement</h2>
+            <img
+              class="image-size"
+              src="./src/cinnamoroll/cinna6.png"
+              alt="Cinnamoroll"
+              class="w-6 h-6 ml-2"
+            />
+          </div>
         </div>
         <div class="grid grid-3">
           <div class="card project-card">
@@ -1123,7 +1264,12 @@
               <span class="tech-tag">Node.js</span>
               <span class="tech-tag">MongoDB</span>
             </div>
-            <a href="#" class="btn btn-primary" style="width: 100%"
+            <a
+              href="#"
+              class="btn btn-primary"
+              style="width: 100%"
+              target="_blank"
+              rel="noopener noreferrer"
               >View Project</a
             >
           </div>
@@ -1141,7 +1287,12 @@
               <span class="tech-tag">React</span>
               <span class="tech-tag">Tailwind</span>
             </div>
-            <a href="#" class="btn btn-primary" style="width: 100%"
+            <a
+              href="#"
+              class="btn btn-primary"
+              style="width: 100%"
+              target="_blank"
+              rel="noopener noreferrer"
               >View Project</a
             >
           </div>
@@ -1159,7 +1310,12 @@
               <span class="tech-tag">API Integration</span>
               <span class="tech-tag">CSS3</span>
             </div>
-            <a href="#" class="btn btn-primary" style="width: 100%"
+            <a
+              href="#"
+              class="btn btn-primary"
+              style="width: 100%"
+              target="_blank"
+              rel="noopener noreferrer"
               >View Project</a
             >
           </div>
@@ -1168,39 +1324,70 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <div class="container">
         <div class="footer-content">
           <h3>Connect With Me 🌟</h3>
           <p>Let's collaborate and create something magical together!</p>
           <div class="footer-social-links">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/jdmnq"
               class="footer-social-link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span class="footer-social-icon">🐙</span> GitHub
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/jewell-dominique-costales-39459b288/"
               class="footer-social-link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span class="footer-social-icon">💼</span> LinkedIn
             </a>
             <a
-              href="https://upwork.com/freelancers/yourusername"
+              href="https://www.upwork.com/freelancers/~01392c790a12bfcec4"
               class="footer-social-link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span class="footer-social-icon">💻</span> Upwork
+            </a>
+            <a href="#appendices" class="footer-social-link">
+              <span class="footer-social-icon">📚</span> Appendices
             </a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 Jewell Dominique Costales. All rights reserved.</p>
+          <p>© 2025 Jewell Dominique Costales.</p>
         </div>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".section");
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
   </body>
 </html>
